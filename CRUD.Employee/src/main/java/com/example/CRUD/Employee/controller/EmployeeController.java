@@ -41,4 +41,16 @@ public class EmployeeController {
     public void dEmployee(Long id) {
         service.deleteEmployee(id);
     }
+
+    @GetMapping("/searchPage")
+    public String searchPage() {
+        return "search";
+    }
+
+    @GetMapping("/search")
+    public Employee sEmployee(Long id) {
+        Employee emp =  service.searchEmployee(id);
+        System.out.println(emp);
+        return emp;
+    }
 }
