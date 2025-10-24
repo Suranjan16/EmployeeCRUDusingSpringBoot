@@ -4,7 +4,10 @@ import com.example.CRUD.Employee.entity.Employee;
 import com.example.CRUD.Employee.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 public class EmployeeController {
@@ -48,9 +51,16 @@ public class EmployeeController {
     }
 
     @GetMapping("/search")
-    public Employee sEmployee(Long id) {
+    public String sEmployee(Long id, Model model) {
         Employee emp =  service.searchEmployee(id);
-        System.out.println(emp);
-        return emp;
+        model.addAttribute("empObject", emp);
+        return "searchResult";
+    }
+
+    @GetMapping("/viewAllPage")
+    public String getAllEmployee(Model model) {
+        List<Employee> empList = service.getAllEmployees();
+        model.addAttribute("empList", empList);
+        return "viewAll";
     }
 }

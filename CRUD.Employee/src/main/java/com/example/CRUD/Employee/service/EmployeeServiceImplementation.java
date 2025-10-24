@@ -5,6 +5,8 @@ import com.example.CRUD.Employee.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class EmployeeServiceImplementation implements EmployeeService{
     @Autowired
@@ -24,5 +26,10 @@ public class EmployeeServiceImplementation implements EmployeeService{
 
     public Employee searchEmployee(Long id) {
         return repo.findById(id).get();
+    }
+
+    @Override
+    public List<Employee> getAllEmployees() {
+        return repo.findAll();
     }
 }
