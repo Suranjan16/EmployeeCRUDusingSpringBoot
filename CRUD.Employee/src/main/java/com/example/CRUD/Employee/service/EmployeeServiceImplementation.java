@@ -21,4 +21,8 @@ public class EmployeeServiceImplementation implements EmployeeService{
     public void deleteEmployee(Long id) {
         repo.deleteById(id);
     }
+
+    public Employee searchEmployee(Long id) {
+        return repo.findById(id).get();
+    }
 }
